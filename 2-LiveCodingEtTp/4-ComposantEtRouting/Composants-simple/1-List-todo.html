@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Liste Todo</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="jumbotron">
+            <h3>Affichage de la liste de todos</h3>
+            <ol>
+                <!-- <li v-for="todo in todos" :key="todo.id">
+                    {{ todo.text}}
+                </li> -->
+                <todo-item
+                    v-for="todo in todos"
+                    v-bind:todo="todo"
+                    v-bind:key="todo.id"
+                />
+            </ol>
+        </div>
+    </div>
+    <script>
+        Vue.component("todo-item", {
+            props:["todo"],
+            template:`
+                <li>{{todo.text}}</li>
+                <li>{{todo.text}}</li>            
+                    `
+        })
+        var app = new Vue({
+            el: '#app',
+            name: 'todo-list',
+            data: {
+                todos: [
+                    { text: 'Apprendre Javascript' },
+                    { text: 'Apprendre Vue.JS' },
+                    { text: 'Créer quelque chose de génial!' },
+                    { text: 'Et plus encore...!' },
+                ],
+            }
+        })
+    </script>
+</body>
+
+</html>

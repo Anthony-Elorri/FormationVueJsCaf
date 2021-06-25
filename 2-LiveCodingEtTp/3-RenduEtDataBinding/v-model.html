@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>La Directive V-model</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Directive V-Model</h1>
+        <div class="jumbotron">
+            Votre nom est : {{name}}
+        </div>
+        <div class="jumbotron">
+            <!-- Le v-model est bi-directionnel (Two way data flow) -->
+            <input type="text" v-model:value="name">
+        </div>
+        <div class="jumbotron">
+            <!-- Il est possible d'interpreter du html avec v-html -->
+            Votre nom est: <span v-html="name"></span>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            name:'v-model',
+            data:{
+                name:"Anthony"
+            }
+        })
+    </script>
+</body>
+</html>

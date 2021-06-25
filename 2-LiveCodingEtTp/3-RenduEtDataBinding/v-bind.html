@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Directive V-bind</title>
+</head>
+
+<body>
+<div id="app">
+    <h1> Directive V-Bind</h1>
+    <div v-bind:title="message" class="jumbotron">
+        Passez votre souris sur moi pour voir mon titre lié dynamiquement
+    </div>
+    <div class="jumbotron">
+        Votre nom est : {{name}}
+        <!-- Le v-bind est unidirectionnel, la modification dans la vue n'affecte pas son state -->
+        <input type="text" v-bind:value="name">
+    </div>
+    <div class="jumbotron">
+        <a v-bind:href="url" target="_blank">Elorri Formation</a>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el:'#app',
+        name:'v-bind',
+        data:{
+            message : "Vous avec affiché cette page le "+ new Date().toLocaleString(),
+            name: "Anthony",
+            url:"http://elorri.fr"
+        }
+    })
+</script>
+</body>
+
+</html>
