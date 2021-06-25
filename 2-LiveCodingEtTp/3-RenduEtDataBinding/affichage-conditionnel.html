@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
+    <title>Affichage conditionnel</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Affichage conditionnel d'un élément</h1>
+        <!-- Affichage conditionné par un booléen -->
+        <div class="jumbotron">
+            <h3>Directive v-if</h3>
+            <p v-if="seen">Maintenant vous me voyez</p>
+            <!-- <button @click="changeSeen">Changer</button> -->
+            <button @click="changeSeen"><span v-if="seen">Disparaître</span><span v-else>Apparaître</span></button>
+        </div>
+        <div class="jumbotron">
+            <h3>Directive v-show</h3>
+            <p v-show='seen'>Maintenant vous me voyez</p>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#app',
+            name:'Affichage-conditionnel',
+            data:{
+                seen:true,
+            },
+            methods:{
+                changeSeen(){
+                    this.seen = !this.seen
+                }
+            }
+        })
+    </script>
+</body>
+</html>

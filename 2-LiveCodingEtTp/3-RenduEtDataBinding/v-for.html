@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>    
+    <title>La directive V-for</title>
+</head>
+<body>
+    <div id="app">
+        <h1>La directive v-for (itération)</h1>
+        <!-- 1er exemple -->
+        <div class="jumbotron">
+            <h3>Affichage de la liste de todos</h3>
+            <ol>
+                <li v-for="todo in todos" :key="todo.id">
+                    {{ todo.text}}
+                </li>
+            </ol>
+        </div>
+        <!-- 2eme Exemple -->
+        <div class="jumbotron">
+            <h3>Affichage de la liste de personnes (avec Template)</h3>
+            <template v-for="person in personList" :key='person.id'>
+                <span v-if="person.gender =='Mr'">
+                    <img src="img/Mr.png" alt="Monsieur">
+                    <div>{{person.name}}</div>
+                </span>
+                <span v-else-if="person.gender =='Mme'">
+                    <img src="img/Mme.png" alt="Madame">
+                    <div>{{person.name}}</div>
+                </span>
+                <span v-else>
+                    <img src="img/unknown.jpg" alt="unknown">
+                    <div>{{person.name}}</div>
+                </span>
+            </template>
+        </div>
+    </div>
+    <script>
+        var app = new Vue ({
+            el:'#app',
+            name:'v-for',
+            data:{
+                // 1er exemple
+                todos:[
+                    {text: 'Apprendre Javascript'},
+                    {text: 'Apprendre Vue.JS'},
+                    {text: 'Créer quelque chose de génial!'},
+                ],
+                // 2eme exemple
+                personList:[
+                    {gender:'Mr', name:'Titi'},
+                    {gender:'?', name:'Jean-Martine'},
+                    {gender:'Mme', name:'Tata'},
+                    {gender:'Mr', name:'Toto'},
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
